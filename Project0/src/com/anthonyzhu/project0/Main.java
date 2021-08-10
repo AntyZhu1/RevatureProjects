@@ -285,7 +285,7 @@ public class Main {
 											
 											for (Customer tempCustomer : pendingList) {
 												custDAO.addCustomer(tempCustomer);
-												custDAO.deletePending(tempCustomer.getId());
+												custDAO.deleteCustomer(tempCustomer.getId());
 											}
 											
 											System.out.println("Process complete, please restart application to update.");
@@ -325,7 +325,7 @@ public class Main {
 										case 4:
 											System.out.println("Deny All accounts selected");
 											for (Customer tempCustomer : pendingList) {
-												custDAO.deletePending(tempCustomer.getId());
+												custDAO.deleteCustomer(tempCustomer.getId());
 											}
 											System.out.println("Process complete, please restart application to update.");
 
@@ -344,7 +344,7 @@ public class Main {
 									}
 								case 3: {
 									System.out.println("View Transactions Selected");
-									empDAO.viewTransactions();
+									employeeFinished = true;
 									break;
 								}
 								case 4: {
@@ -378,7 +378,10 @@ public class Main {
 				else if (loginAs.toLowerCase().equals("c") | loginAs.toLowerCase().equals("customer")) {
 					
 					boolean custFinished = false;
-
+					
+					
+					
+						
 						System.out.println("--------------------------------------------"
 								+ "\n"
 								+ "Enter Username: "
@@ -496,28 +499,18 @@ public class Main {
 									
 									System.out.println("Your Current pending fund transfers: ");
 									
-									int i = custDAO.showSentFunds(loggedInCustomer.getId());
-									if (i > 0) {
-										System.out.println("--------------------------------------------"
-												+ "\n"
-												+ "Enter Recieve ID"
-												+ "\n"
-												+ "--------------------------------------------");
-
-										int receiveFrom = userIn.nextInt();
-
-										custDAO.receiveFunds(receiveFrom);
-
-										break;
-									}
-									else {
-										System.out.println("--------------------------------------------" +
-												"\n" +
-												"No Pending Transactions" +
-												"\n" +
-												"--------------------------------------------");
-										break;
-									}
+									custDAO.showSentFunds(loggedInCustomer.getId());
+									
+									System.out.println("--------------------------------------------"
+											+ "\n"
+											+ "Enter Recieve ID"
+											+ "--------------------------------------------");
+							
+									int recieveFrom = userIn.nextInt();
+									
+									custDAO.recieveFunds(recieveFrom);
+											
+									break;
 								}
 								
 								case 5: {

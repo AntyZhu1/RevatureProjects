@@ -206,7 +206,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 			ps1.setDouble(1, currentBalance - withdrawAmount);
 			
 			ps1.setInt(2, userID);
-
+			
+			
+			
 			int i = ps1.executeUpdate();
 			
 			if (i > 0) {
@@ -216,20 +218,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 				
 				new_result.next();
 				
-				System.out.println("Your new balance is: $" + new_result.getDouble(1));
-
-				String logTransaction = "INSERT INTO recent_transactions (customer_id, transaction_type, transaction_amount) VALUES (?, ?, ?)";
-
-				PreparedStatement transactionPS = con.prepareStatement(logTransaction);
-
-				transactionPS.setInt(1, userID);
-
-				transactionPS.setString(2,"Withdrawl");
-
-				transactionPS.setDouble(3, withdrawAmount);
-
-				int x = transactionPS.executeUpdate();
-
+				System.out.println("Your new balance is " + new_result.getDouble(1));
 			}
 			else {
 				System.out.println("An error has occurred, please check over process.");
@@ -281,18 +270,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 				
 				new_result.next();
 				
-				System.out.println("Your new balance is: $" + new_result.getDouble(1));
-				String logTransaction = "INSERT INTO recent_transactions (customer_id, transaction_type, transaction_amount) VALUES (?, ?, ?)";
-
-				PreparedStatement transactionPS = con.prepareStatement(logTransaction);
-
-				transactionPS.setInt(1, userID);
-
-				transactionPS.setString(2,"Deposit");
-
-				transactionPS.setDouble(3, depositAmount);
-
-				int x = transactionPS.executeUpdate();
+				System.out.println("Your new balance is " + new_result.getDouble(1));
 				
 			}
 			else {
@@ -307,12 +285,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public void sendFunds(double amount, int sendFromID, int sendToID) throws SQLException {
-		String request = "INSERT INTO transfer_funds (transfer_to_id, transfer_money) VALUES (?, ?)";
+		String request = "INSERT INTO transfer_funds VALUES (?, ?)";
 		
 		PreparedStatement ps = con.prepareStatement(request);
 		
-		ps.setInt(1, sendToID);
-		ps.setDouble(2, amount);
+		ps.setInt(2, sendToID);
+		ps.setDouble(3, amount);
 		
 		int result = ps.executeUpdate();
 		
@@ -339,18 +317,6 @@ public class CustomerDAOImpl implements CustomerDAO{
 			withdrawlStatement.setInt(2, sendFromID);
 			
 			int i = withdrawlStatement.executeUpdate();
-
-			String logTransaction = "INSERT INTO recent_transactions (customer_id, transaction_type, transaction_amount) VALUES (?, ?, ?)";
-
-			PreparedStatement transactionPS = con.prepareStatement(logTransaction);
-
-			transactionPS.setInt(1, sendFromID);
-
-			transactionPS.setString(2,"Send Funds");
-
-			transactionPS.setDouble(3, amount);
-
-			int x = transactionPS.executeUpdate();
 			
 			if (result > 0) { 
 				System.out.println("Sent $" + amount + ".");
@@ -369,7 +335,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	@Override
-	public void receiveFunds(int transactionID) throws SQLException {
+	public void recieveFunds(int transactionID) throws SQLException {
 		String request = "SELECT * FROM transfer_funds WHERE transfer_id = ?";
 		
 		PreparedStatement ps1 = con.prepareStatement(request);
@@ -403,29 +369,9 @@ public class CustomerDAOImpl implements CustomerDAO{
 		ps2.setInt(2, transfer.getInt(2));
 		
 		int i = ps2.executeUpdate();
-
-		String logTransaction = "INSERT INTO recent_transactions (customer_id, transaction_type, transaction_amount) VALUES (?, ?, ?)";
-
-		PreparedStatement transactionPS = con.prepareStatement(logTransaction);
-
-		transactionPS.setInt(1, transfer.getInt(2));
-
-		transactionPS.setString(2,"Receive Funds");
-
-		transactionPS.setDouble(3, transfer_amount);
-
-		int x = transactionPS.executeUpdate();
-
-		String clear_transactions = "DELETE FROM transfer_funds WHERE transfer_id = ?";
-
-		PreparedStatement clear_statement = con.prepareStatement(clear_transactions);
-
-		clear_statement.setInt(1,transactionID);
-
-		int cleared = clear_statement.executeUpdate();
-
+		
 		if (i > 0) { 
-			System.out.println("Received $" + transfer_amount + ".");
+			System.out.println("Recieved $" + transfer_amount + ".");
 		}
 		else {
 			System.out.println("An error has occurred, please check over process.");
@@ -434,7 +380,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	}
 
 	@Override
-	public int showSentFunds(int userID) throws SQLException {
+	public void showSentFunds(int userID) throws SQLException {
 
 		String request = "SELECT * FROM transfer_funds WHERE transfer_to_id = ?";
 		
@@ -443,19 +389,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 		ps1.setInt(1, userID);
 		
 		ResultSet output = ps1.executeQuery();
-
-		int num_pending_transfers = 0;
-
+		
 		while (output.next()) {
-			num_pending_transfers++;
 			System.out.println("Transfer ID: " + output.getInt(1));
 			System.out.println("Transfering To account with ID: " + output.getInt(2));
 			System.out.println("Transfer Amount: " + output.getDouble(3));
 			System.out.println("");
 		}
-
-		return num_pending_transfers;
-
+		
 	}
 
 	@Override

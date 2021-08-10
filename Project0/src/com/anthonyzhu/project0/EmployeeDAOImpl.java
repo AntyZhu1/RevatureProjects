@@ -133,13 +133,13 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 				+ "\n"
 				+ "Recent Transactions:"
 				+ "\n");
-		while (result.next()) {
-
+		for (int i = 0; i < result.getFetchSize(); i++) {
+			
 			System.out.println("Transaction ID: " + result.getInt(1));
 			System.out.println("Customer ID: " + result.getInt(2));
 			System.out.println("Transaction Type: " + result.getString(3));
 			System.out.println("Transaction Amount: " + result.getDouble(4));
-			System.out.println(" ");
+			
 		}
 		
 	}
