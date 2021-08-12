@@ -8,6 +8,8 @@ public interface CustomerDAO {
 
     void updateCustomer(Customer customer, Customer updater) throws SQLException;
 
+    boolean findCustomer(String username) throws SQLException;
+
     public void addPending(Customer customer) throws SQLException;
 
     void deleteCustomer(int id) throws SQLException;
@@ -17,6 +19,8 @@ public interface CustomerDAO {
     List<Customer> getCustomers() throws SQLException;
 
     List<Customer> getPending() throws SQLException;
+
+    boolean findPendingCustomer(String username) throws SQLException;
 
     Customer CustomerById(int id) throws SQLException;
 

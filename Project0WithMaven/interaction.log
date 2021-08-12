@@ -4,5 +4,168 @@
 11 Aug 2021 22:39:36,905 | Quit Selected
 11 Aug 2021 22:39:38,138 | Session Ended
 
+12 Aug 2021 10:05:10,092 | Session Started 
+12 Aug 2021 10:05:17,673 | Session Started 
+12 Aug 2021 10:05:27,892 | Logged in as Employee: john
+12 Aug 2021 10:05:38,647 | Edit Customer Accounts Selected
+12 Aug 2021 10:06:04,505 | Quitting Selected
+12 Aug 2021 10:06:04,506 | Session Started 
+12 Aug 2021 10:06:10,355 | Session Ended
 
+12 Aug 2021 10:06:26,220 | Session Started 
+12 Aug 2021 10:06:36,669 | New pending account created
+12 Aug 2021 10:06:36,670 | Session Started 
+12 Aug 2021 10:06:40,730 | Logged in as Employee: john
+12 Aug 2021 10:06:42,681 | Review Pending Customer Accounts Selected
+12 Aug 2021 10:06:45,365 | Approve an Account Selected
+12 Aug 2021 10:06:48,208 | Edit Customer Accounts Selected
+12 Aug 2021 10:06:50,845 | Quitting Selected
+12 Aug 2021 10:06:50,845 | Session Started 
+12 Aug 2021 10:06:55,268 | Logged in as Employee: john
+12 Aug 2021 10:06:56,784 | Edit Customer Accounts Selected
+12 Aug 2021 10:06:59,692 | Delete Customer Selected
+12 Aug 2021 10:08:27,614 | Session Started 
+12 Aug 2021 10:08:33,683 | Session Started 
+12 Aug 2021 10:08:35,679 | Session Started 
+12 Aug 2021 10:08:36,284 | Session Started 
+12 Aug 2021 10:08:40,223 | Logged in as Employee: john
+12 Aug 2021 10:08:42,007 | Edit Customer Accounts Selected
+12 Aug 2021 10:08:44,448 | Delete Customer Selected
+12 Aug 2021 10:08:48,614 | Quit Selected
+12 Aug 2021 10:08:48,614 | Session Started 
+12 Aug 2021 10:08:51,878 | Logged in as Employee: john
+12 Aug 2021 10:08:53,074 | Edit Customer Accounts Selected
+12 Aug 2021 10:08:54,973 | Quitting Selected
+12 Aug 2021 10:08:54,973 | Session Started 
+12 Aug 2021 10:08:56,796 | Session Ended
 
+12 Aug 2021 10:42:20,062 | Session Started 
+12 Aug 2021 10:42:20,063 | Login Prompted 
+12 Aug 2021 10:42:25,455 | Logged in as Employee: john
+12 Aug 2021 10:42:27,169 | Quit Selected
+12 Aug 2021 10:42:27,169 | Login Prompted 
+12 Aug 2021 10:42:28,790 | Session Ended
+
+12 Aug 2021 10:43:53,329 | Session Started 
+12 Aug 2021 10:43:53,330 | Login Prompted 
+12 Aug 2021 10:44:00,705 | Login Prompted 
+12 Aug 2021 10:44:03,656 | Logged in as Employee: john
+12 Aug 2021 10:44:11,402 | Edit Customer Accounts Selected
+12 Aug 2021 10:44:13,519 | Quitting Selected
+12 Aug 2021 10:44:13,519 | Login Prompted 
+12 Aug 2021 10:44:16,745 | Logged in as Employee: john
+12 Aug 2021 10:44:18,260 | Review Pending Customer Accounts Selected
+12 Aug 2021 10:44:20,917 | Quitting selected
+12 Aug 2021 10:44:24,136 | View Transactions Selected
+12 Aug 2021 10:44:28,785 | Quit Selected
+12 Aug 2021 10:44:28,785 | Login Prompted 
+12 Aug 2021 10:44:34,744 | Logged in as Customer: jane
+12 Aug 2021 10:44:36,000 | Withdraw Money Selected
+12 Aug 2021 10:44:36,914 | Withdrew $100.0
+12 Aug 2021 10:44:36,914 | Logged in as Customer: jane
+12 Aug 2021 10:44:38,198 | Deposit Money Selected
+12 Aug 2021 10:44:38,976 | Deposited $100.0
+12 Aug 2021 10:44:38,976 | Logged in as Customer: jane
+12 Aug 2021 10:44:42,241 | Quit Selected
+12 Aug 2021 10:44:42,242 | Login Prompted 
+12 Aug 2021 10:44:43,526 | Session Ended
+
+12 Aug 2021 10:46:23,359 | Session Started 
+12 Aug 2021 10:46:23,360 | Login Prompted 
+12 Aug 2021 10:46:26,920 | Logged in as Employee: john
+12 Aug 2021 10:46:28,621 | View Transactions Selected
+12 Aug 2021 10:46:31,871 | Quit Selected
+12 Aug 2021 10:46:31,871 | Login Prompted 
+12 Aug 2021 10:48:04,763 | Session Ended
+
+12 Aug 2021 10:48:09,232 | Session Started 
+12 Aug 2021 10:48:09,233 | Login Prompted 
+12 Aug 2021 10:48:13,705 | Logged in as Customer: jane
+12 Aug 2021 10:48:16,383 | Quit Selected
+12 Aug 2021 10:48:16,383 | Login Prompted 
+12 Aug 2021 10:48:18,513 | Session Ended
+
+12 Aug 2021 10:49:33,379 | Session Started 
+12 Aug 2021 10:49:33,380 | Login Prompted 
+12 Aug 2021 10:49:37,017 | Logged in as Employee: john
+12 Aug 2021 10:49:42,082 | Quit Selected
+12 Aug 2021 10:49:42,082 | Login Prompted 
+12 Aug 2021 10:49:43,400 | Session Ended
+
+12 Aug 2021 10:50:21,822 | Session Started 
+12 Aug 2021 10:50:21,822 | Login Prompted 
+12 Aug 2021 10:50:25,382 | Logged in as Employee: john
+12 Aug 2021 10:50:26,707 | Edit Customer Accounts Selected
+12 Aug 2021 10:50:29,641 | Quitting Selected
+12 Aug 2021 10:50:29,641 | Login Prompted 
+12 Aug 2021 10:50:32,608 | Session Ended
+
+12 Aug 2021 10:52:32,622 | Session Started 
+12 Aug 2021 10:52:32,622 | Login Prompted 
+12 Aug 2021 10:52:36,141 | Logged in as Employee: john
+12 Aug 2021 10:52:37,341 | Edit Customer Accounts Selected
+12 Aug 2021 10:52:39,386 | Quitting Selected
+12 Aug 2021 10:52:41,744 | Quit Selected
+12 Aug 2021 10:52:41,745 | Login Prompted 
+12 Aug 2021 10:52:42,860 | Session Ended
+
+12 Aug 2021 11:01:38,901 | Session Started 
+12 Aug 2021 11:01:38,902 | Login Prompted 
+12 Aug 2021 11:01:47,733 | New pending account created
+12 Aug 2021 11:01:47,733 | Login Prompted 
+12 Aug 2021 11:01:51,471 | Login Prompted 
+12 Aug 2021 11:01:55,906 | Session Ended
+
+12 Aug 2021 11:08:42,117 | Session Started 
+12 Aug 2021 11:08:42,117 | Login Prompted 
+12 Aug 2021 11:09:07,401 | Login Prompted 
+12 Aug 2021 11:09:58,560 | Session Started 
+12 Aug 2021 11:09:58,560 | Login Prompted 
+12 Aug 2021 11:10:16,898 | Login Prompted 
+12 Aug 2021 11:10:18,398 | Session Ended
+
+12 Aug 2021 11:11:10,022 | Session Started 
+12 Aug 2021 11:11:10,022 | Login Prompted 
+12 Aug 2021 11:11:12,179 | Session Ended
+
+12 Aug 2021 11:19:03,688 | Session Started 
+12 Aug 2021 11:19:03,689 | Login Prompted 
+12 Aug 2021 11:19:22,961 | Logged in as Employee: john
+12 Aug 2021 11:19:32,766 | Edit Customer Accounts Selected
+12 Aug 2021 11:19:45,761 | Edit Information Selected
+12 Aug 2021 11:20:17,800 | Quit Selected
+12 Aug 2021 11:20:17,800 | Login Prompted 
+12 Aug 2021 11:20:27,131 | Session Ended
+
+12 Aug 2021 11:20:30,479 | Session Started 
+12 Aug 2021 11:20:30,480 | Login Prompted 
+12 Aug 2021 11:20:35,784 | Logged in as Customer: jane
+12 Aug 2021 11:20:53,482 | Withdraw Money Selected
+12 Aug 2021 11:20:54,997 | Withdrew $10.0
+12 Aug 2021 11:20:55,000 | Login Prompted 
+12 Aug 2021 11:21:18,612 | Logged in as Customer: jane
+12 Aug 2021 11:21:22,186 | Send Money Selected
+12 Aug 2021 11:21:29,240 | Sent $100.0 to account with ID:  3
+12 Aug 2021 11:21:29,247 | Login Prompted 
+12 Aug 2021 11:21:46,737 | Logged in as Customer: Alexander
+12 Aug 2021 11:21:50,054 | Receive Money Selected
+12 Aug 2021 11:21:59,260 | Received $100.0
+12 Aug 2021 11:21:59,262 | Login Prompted 
+12 Aug 2021 11:22:12,153 | Logged in as Customer: Alexander
+12 Aug 2021 11:22:21,169 | Quit Selected
+12 Aug 2021 11:22:21,172 | Login Prompted 
+12 Aug 2021 11:22:24,323 | Session Ended
+
+12 Aug 2021 11:25:59,943 | Session Started 
+12 Aug 2021 11:25:59,943 | Login Prompted 
+12 Aug 2021 11:26:10,937 | New pending account created
+12 Aug 2021 11:26:10,937 | Login Prompted 
+12 Aug 2021 11:26:18,198 | Logged in as Employee: john
+12 Aug 2021 11:26:20,779 | Review Pending Customer Accounts Selected
+12 Aug 2021 11:26:27,465 | Deny All accounts selected
+12 Aug 2021 11:26:35,967 | Quit Selected
+12 Aug 2021 11:26:35,968 | Login Prompted 
+12 Aug 2021 11:26:37,279 | Session Ended
+
+12 Aug 2021 11:27:28,426 | Session Started 
+12 Aug 2021 11:27:28,426 | Login Prompted 

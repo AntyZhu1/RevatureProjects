@@ -88,9 +88,32 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
+    public boolean findCustomer(String username) throws SQLException {
+        String request = "SELECT * FROM customers WHERE cust_username = ?";
+
+        PreparedStatement ps = con.prepareStatement(request);
+
+        ps.setString(1,username);
+
+        ResultSet output = ps.executeQuery();
+
+        int i = 0;
+
+        while (output.next()) {
+            i++;
+        }
+        if (i > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    @Override
     public void deleteCustomer(int id) throws SQLException {
 
-        String request = "DELETE FROM customers where id = ?";
+        String request = "DELETE FROM customers where cust_id = ?";
 
         PreparedStatement ps = con.prepareStatement(request);
 
@@ -159,6 +182,29 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         return pending;
 
+    }
+
+    @Override
+    public boolean findPendingCustomer(String username) throws SQLException {
+        String request = "SELECT * FROM pending WHERE pending_username = ?";
+
+        PreparedStatement ps = con.prepareStatement(request);
+
+        ps.setString(1,username);
+
+        ResultSet output = ps.executeQuery();
+
+        int i = 0;
+
+        while (output.next()) {
+            i++;
+        }
+        if (i > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
