@@ -1,5 +1,6 @@
 package com.anthonyzhu.project0;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -273,54 +274,68 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public void sendFunds(double amount, int sendFromID, int sendToID) throws SQLException {
-        String request = "INSERT INTO transfer_funds VALUES (?, ?)";
+        String request = "INSERT INTO transfer_funds (transfer_to_id, transfer_money) VALUES (?, ?)";
 
         PreparedStatement ps = con.prepareStatement(request);
 
-        ps.setInt(2, sendToID);
-        ps.setDouble(3, amount);
+        ps.setInt(1, sendToID);
+        ps.setDouble(2, amount);
 
-        int result = ps.executeUpdate();
+        String check_if_acount_exists = "SELECT * FROM customers WHERE cust_id = ?";
 
-        String request2 = "SELECT cust_money FROM customers WHERE cust_id = ?";
+        PreparedStatement existsPS = con.prepareStatement(check_if_acount_exists);
 
-        PreparedStatement getBalance = con.prepareStatement(request2);
+        existsPS.setInt(1,sendToID);
 
-        getBalance.setInt(1, sendFromID);
+        ResultSet accountsExist = existsPS.executeQuery();
 
-        String request3 = "UPDATE customers SET cust_money = ? where cust_id = ?";
+        if (amount > 0 & accountsExist.next()) {
+            int result = ps.executeUpdate();
 
-        PreparedStatement withdrawlStatement = con.prepareStatement(request3);
 
-        ResultSet balance_result = getBalance.executeQuery();
+            String request2 = "SELECT cust_money FROM customers WHERE cust_id = ?";
 
-        balance_result.next();
+            PreparedStatement getBalance = con.prepareStatement(request2);
 
-        double currentBalance = balance_result.getDouble(1);
+            getBalance.setInt(1, sendFromID);
 
-        if (amount <= currentBalance & amount > 0) {
+            String request3 = "UPDATE customers SET cust_money = ? where cust_id = ?";
 
-            withdrawlStatement.setDouble(1, currentBalance - amount);
+            PreparedStatement withdrawlStatement = con.prepareStatement(request3);
 
-            withdrawlStatement.setInt(2, sendFromID);
+            ResultSet balance_result = getBalance.executeQuery();
 
-            int i = withdrawlStatement.executeUpdate();
+            balance_result.next();
 
-            if (result > 0) {
-                System.out.println("Sent $" + amount + ".");
+            double currentBalance = balance_result.getDouble(1);
+
+            if (amount <= currentBalance & amount > 0) {
+
+                withdrawlStatement.setDouble(1, currentBalance - amount);
+
+                withdrawlStatement.setInt(2, sendFromID);
+
+                int i = withdrawlStatement.executeUpdate();
+
+                if (result > 0) {
+                    System.out.println("Sent $" + amount + ".");
+                } else {
+                    System.out.println("An error has occurred, please check over process.");
+                }
+            } else if (amount > currentBalance) {
+                System.out.println("Error, you cannot send more money than you have in your account.");
             } else {
-                System.out.println("An error has occurred, please check over process.");
+                System.out.println("Error, invalid amount.");
             }
-        } else if (amount > currentBalance) {
-            System.out.println("Error, you cannot send more money than you have in your account.");
-        } else {
-            System.out.println("Error, invalid amount.");
+        }
+        else {
+            System.out.println("Error, invalid information. Check if account ID exists or if Money Sent is a positive amount.");
         }
 
     }
 
     @Override
-    public void recieveFunds(int transactionID) throws SQLException {
+    public double receiveFunds(int transactionID) throws SQLException {
         String request = "SELECT * FROM transfer_funds WHERE transfer_id = ?";
 
         PreparedStatement ps1 = con.prepareStatement(request);
@@ -357,14 +372,23 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         if (i > 0) {
             System.out.println("Recieved $" + transfer_amount + ".");
+            String clear_transaction = "DELETE FROM transfer_funds WHERE transfer_id = ?";
+
+            PreparedStatement clearStatement = con.prepareStatement(clear_transaction);
+
+            clearStatement.setInt(1,transactionID);
+
+            int clear = clearStatement.executeUpdate();
+            return transfer_amount;
         } else {
             System.out.println("An error has occurred, please check over process.");
+            return 0;
         }
 
     }
 
     @Override
-    public void showSentFunds(int userID) throws SQLException {
+    public int showSentFunds(int userID) throws SQLException {
 
         String request = "SELECT * FROM transfer_funds WHERE transfer_to_id = ?";
 
@@ -374,13 +398,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         ResultSet output = ps1.executeQuery();
 
+        int num_transactions = 0;
+
         while (output.next()) {
+            num_transactions++;
             System.out.println("Transfer ID: " + output.getInt(1));
             System.out.println("Transfering To account with ID: " + output.getInt(2));
             System.out.println("Transfer Amount: " + output.getDouble(3));
             System.out.println("");
-        }
 
+        }
+        return num_transactions;
     }
 
     @Override

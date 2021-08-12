@@ -289,8 +289,8 @@ public class CustomerDAOImpl implements CustomerDAO{
 		
 		PreparedStatement ps = con.prepareStatement(request);
 		
-		ps.setInt(2, sendToID);
-		ps.setDouble(3, amount);
+		ps.setInt(1, sendToID);
+		ps.setDouble(2, amount);
 		
 		int result = ps.executeUpdate();
 		

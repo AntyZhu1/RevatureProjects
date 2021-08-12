@@ -1,20 +1,41 @@
 package com.anthonyzhu.project0;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.log4j.*;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private  static  final Logger logger = LogManager.getLogger(Main.class);
+
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
+
+//        ConsoleAppender consoleAppender = new ConsoleAppender();
+//        consoleAppender.setThreshold(Level.INFO);
+//        consoleAppender.setLayout(new PatternLayout("How does this look? "));
+//        consoleAppender.activateOptions();
+//        LogManager.getRootLogger().addAppender(consoleAppender);
+//
+//        logger.debug("Hello this is a debug message");
+//        logger.info("Hello this is a info message");
+
+        FileAppender f = new FileAppender();
+        f.setName("Interaction Log");
+        f.setFile("interaction.log");
+        f.setThreshold(Level.INFO);
+
+
 
         boolean finished = false;
 
         while (!finished) {
+            f.setLayout(new PatternLayout("%d{DATE} | Session Started " + "\n"));
+            f.setAppend(true);
+            f.activateOptions();
+            LogManager.getRootLogger().addAppender(f);
+            logger.info("%d{DATE} | Session Started "+ "\n");
             System.out.println("--------------------------------------------");
             System.out.println("Welcome to Generic Bank! Would you like to Log In?"
                     + "\n"
@@ -72,6 +93,13 @@ public class Main {
                         if (temp.getUsername().equals(employeeUsername) & temp.getPassword().equals(employeePassword)) {
                             boolean employeeFinished = false;
 
+                            f.setLayout(new PatternLayout("%d{DATE} | Logged in as Employee: " + temp.getUsername() + "\n"));
+                            f.setAppend(true);
+                            f.activateOptions();
+                            LogManager.getRootLogger().addAppender(f);
+                            logger.info("%d{DATE} | Logged in as Employee: "+ temp.getUsername() + "\n");
+
+
                             while (!employeeFinished) {
                                 System.out.println("Logged in as " + employeeUsername);
 
@@ -96,6 +124,12 @@ public class Main {
                                 switch (employeeSelection) {
 
                                     case 1: {
+                                        f.setLayout(new PatternLayout("%d{DATE} | Edit Customer Accounts Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Edit Customer Accounts Selected" + "\n");
+
                                         System.out.println("Edit Customer Accounts Selected");
                                         System.out.println("--------------------------------------------"
                                                 + "\n"
@@ -127,6 +161,12 @@ public class Main {
                                         switch (interactionSelection) {
 
                                             case 1:
+                                                f.setLayout(new PatternLayout("%d{DATE} | Edit Information Selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Edit Information Selected" + "\n");
+
                                                 System.out.println("Edit Information Selected");
                                                 System.out.println("--------------------------------------------"
                                                         + "Which customer's information would you like to edit?"
@@ -177,6 +217,13 @@ public class Main {
                                                 continue;
 
                                             case 2:
+//
+                                                f.setLayout(new PatternLayout("%d{DATE} | Delete Customer Selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Delete Customer Selected" + "\n");
+
                                                 System.out.println("Delete Customer Selected");
                                                 System.out.println("--------------------------------------------"
                                                         + "Which customer would you like to delete?"
@@ -204,7 +251,13 @@ public class Main {
                                                 continue;
 
                                             case 3:
-                                                System.out.println("Quitting");
+
+                                                f.setLayout(new PatternLayout("%d{DATE} | Quitting Selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Quitting Selected" + "\n");
+//                                                System.out.println("Quitting");
 
                                                 employeeFinished = true;
                                                 break;
@@ -217,6 +270,13 @@ public class Main {
                                     }
 
                                     case 2: {
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | Review Pending Customer Accounts Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Review Pending Customer Accounts Selected" + "\n");
+
                                         System.out.println("Review Pending Customer Accounts Selected");
 
                                         System.out.println("--------------------------------------------"
@@ -253,6 +313,13 @@ public class Main {
                                         switch (interactionSelection) {
 
                                             case 1:
+
+                                                f.setLayout(new PatternLayout("%d{DATE} | Approve an Account Selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Approve an Account Selected" + "\n");
+
                                                 System.out.println("Approve an Account Selected");
                                                 System.out.println("--------------------------------------------"
                                                         + "\n"
@@ -282,6 +349,13 @@ public class Main {
                                                 continue;
 
                                             case 2:
+
+                                                f.setLayout(new PatternLayout("%d{DATE} | Approve All Accounts Selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Approve All Accounts Selected" + "\n");
+
                                                 System.out.println("Approve All Accounts Selected");
 
                                                 for (Customer tempCustomer : pendingList) {
@@ -293,6 +367,13 @@ public class Main {
                                                 continue;
 
                                             case 3:
+
+                                                f.setLayout(new PatternLayout("%d{DATE} | Deny an Account Selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Deny an Account Selected" + "\n");
+
                                                 System.out.println("Deny an Account Selected");
                                                 System.out.println("--------------------------------------------"
                                                         + "\n"
@@ -323,15 +404,29 @@ public class Main {
                                                 continue;
 
                                             case 4:
+
+                                                f.setLayout(new PatternLayout("%d{DATE} | Deny All accounts selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Deny All accounts selected" + "\n");
+
                                                 System.out.println("Deny All accounts selected");
                                                 for (Customer tempCustomer : pendingList) {
-                                                    custDAO.deleteCustomer(tempCustomer.getId());
+                                                    custDAO.deletePending(tempCustomer.getId());
                                                 }
                                                 System.out.println("Process complete, please restart application to update.");
 
                                                 continue;
 
                                             case 5:
+
+                                                f.setLayout(new PatternLayout("%d{DATE} | Quitting selected" + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Quitting selected" + "\n");
+
                                                 System.out.println("Quitting");
 
                                                 break;
@@ -343,11 +438,25 @@ public class Main {
                                         break;
                                     }
                                     case 3: {
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | View Transactions Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | View Transactions Selected" + "\n");
+
                                         System.out.println("View Transactions Selected");
-                                        employeeFinished = true;
+                                        empDAO.viewTransactions();
                                         break;
                                     }
                                     case 4: {
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | Quit Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Quit Selected" + "\n");
+
                                         System.out.println("Quit Selected");
                                         employeeFinished = true;
                                         break;
@@ -404,6 +513,12 @@ public class Main {
 
                             if (tempCust.getUsername().equals(custUsername) & tempCust.getPassword().equals(custPassword)) {
 
+                                f.setLayout(new PatternLayout("%d{DATE} | Logged in as Customer: " + tempCust.getUsername() + "\n"));
+                                f.setAppend(true);
+                                f.activateOptions();
+                                LogManager.getRootLogger().addAppender(f);
+                                logger.info("%d{DATE} | Logged in as Customer: " + tempCust.getUsername() + "\n");
+
                                 custLoggedInAs = custUsername;
 
                                 loggedInCustomer.setId(tempCust.getId());
@@ -436,6 +551,13 @@ public class Main {
                                 switch (employeeSelection) {
 
                                     case 1: {
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | Withdraw Money Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Withdraw Money Selected" + "\n");
+
                                         System.out.println("Withdraw Money Selected");
                                         System.out.println("--------------------------------------------"
                                                 + "\n"
@@ -451,10 +573,23 @@ public class Main {
 
                                         custDAO.withdraw(loggedInCustomer.getId(), withdrawAmount);
 
+                                        f.setLayout(new PatternLayout("%d{DATE} | Withdrew $" + withdrawAmount + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Withdrew $" + withdrawAmount + "\n");
+
                                         break;
                                     }
 
                                     case 2: {
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | Deposit Money Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Deposit Money Selected" + "\n");
+
                                         System.out.println("Deposit Money Selected");
 
                                         System.out.println("--------------------------------------------"
@@ -468,10 +603,23 @@ public class Main {
 
                                         custDAO.deposit(loggedInCustomer.getId(), depositAmount);
 
+                                        f.setLayout(new PatternLayout("%d{DATE} | Deposited $" + depositAmount + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Deposited $" + depositAmount + "\n");
+
                                         break;
                                     }
 
                                     case 3: {
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | Send Money Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Send Money Selected" + "\n");
+
                                         System.out.println("Send Money to Another Account selected");
 
                                         System.out.println("--------------------------------------------"
@@ -486,30 +634,81 @@ public class Main {
 
                                         System.out.println("--------------------------------------------");
 
-                                        custDAO.sendFunds(sendAmount, loggedInCustomer.getId(), sendTo);
+                                        try {
+                                            custDAO.sendFunds(sendAmount, loggedInCustomer.getId(), sendTo);
+
+                                            f.setLayout(new PatternLayout("%d{DATE} | Sent $" + sendAmount + " to account with ID:  " + sendTo + "\n"));
+                                            f.setAppend(true);
+                                            f.activateOptions();
+                                            LogManager.getRootLogger().addAppender(f);
+                                            logger.info("%d{DATE} | Sent $" + sendTo + " to account with ID:  " + sendTo + "\n");
+                                        }
+                                        catch (Exception e) {
+                                            System.out.println("Error, invalid ID.");
+                                        }
+
+
                                         break;
                                     }
 
                                     case 4: {
-                                        System.out.println("Recieve Money from Another Account selected");
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | Receive Money Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Receive Money Selected" + "\n");
+
+                                        System.out.println("Receive Money from Another Account selected");
 
                                         System.out.println("Your Current pending fund transfers: ");
 
-                                        custDAO.showSentFunds(loggedInCustomer.getId());
+                                        int i = custDAO.showSentFunds(loggedInCustomer.getId());
 
-                                        System.out.println("--------------------------------------------"
-                                                + "\n"
-                                                + "Enter Recieve ID"
-                                                + "--------------------------------------------");
+                                        if (i != 0) {
 
-                                        int recieveFrom = userIn.nextInt();
+                                            System.out.println("--------------------------------------------"
+                                                    + "\n"
+                                                    + "Enter Recieve ID" +
+                                                    "\n"
+                                                    + "--------------------------------------------");
 
-                                        custDAO.recieveFunds(recieveFrom);
+                                            int receiveFrom = userIn.nextInt();
+                                            try {
+                                                double received = custDAO.receiveFunds(receiveFrom);
+
+                                                f.setLayout(new PatternLayout("%d{DATE} | Received $" + received + "\n"));
+                                                f.setAppend(true);
+                                                f.activateOptions();
+                                                LogManager.getRootLogger().addAppender(f);
+                                                logger.info("%d{DATE} | Received $" + received + "\n");
+                                            }
+                                            catch (Exception e) {
+                                                System.out.println("Error, invalid transfer ID.");
+                                            }
+
+
+                                        }
+                                        else {
+                                            System.out.println("--------------------------------------------"
+                                                    + "\n"
+                                                    + "No Pending Transactions" +
+                                                    "\n"
+                                                    + "--------------------------------------------");
+                                        }
+
 
                                         break;
                                     }
 
                                     case 5: {
+
+                                        f.setLayout(new PatternLayout("%d{DATE} | Quit Selected" + "\n"));
+                                        f.setAppend(true);
+                                        f.activateOptions();
+                                        LogManager.getRootLogger().addAppender(f);
+                                        logger.info("%d{DATE} | Quit Selected" + "\n");
+
                                         System.out.println("Quit Selected");
                                         custFinished = true;
                                         break;
@@ -550,9 +749,28 @@ public class Main {
                                 newPending.setPassword(custPassword);
                                 newPending.setBalance(newAccountDeposit);
 
-                                custDAO.addPending(newPending);
+                                try {
+                                    custDAO.addPending(newPending);
 
+                                    f.setLayout(new PatternLayout("%d{DATE} | New pending account created" + "\n"));
+                                    f.setAppend(true);
+                                    f.activateOptions();
+                                    LogManager.getRootLogger().addAppender(f);
+                                    logger.info("%d{DATE} | New pending account created" + "\n");
+
+                                    custFinished = true;
+                                }
+                                catch (Exception e) {
+                                    System.out.println("There was an error creating your account. Please try again.");
+                                }
+
+
+                            }
+                            else if (makeNewAccount.equals("n") | makeNewAccount.equals("no")){
                                 custFinished = true;
+                            }
+                            else {
+                                System.out.println("Invalid entry. please enter yes (y) or, no (n)");
                             }
                         }
                     }
@@ -562,6 +780,12 @@ public class Main {
                 }
             } else if (userSelection.toLowerCase().equals("n") | userSelection.toLowerCase().equals("no")) {
                 System.out.println("Ok, Have a nice day!");
+
+                f.setLayout(new PatternLayout("%d{DATE} | Session Ended" + "\n" + "\n"));
+                f.setAppend(true);
+                f.activateOptions();
+                LogManager.getRootLogger().addAppender(f);
+                logger.info("%d{DATE} | Session Ended" + "\n" + "\n");
 
                 finished = true;
             } else {

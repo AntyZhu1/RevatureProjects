@@ -22,13 +22,13 @@ public interface CustomerDAO {
 
     void sendFunds(double amount, int sendFromID, int sendToID) throws SQLException;
 
-    void recieveFunds(int transactionID) throws SQLException;
+    double receiveFunds(int transactionID) throws SQLException;
 
     void withdraw(int userID, double withdrawAmount) throws SQLException;
 
     void deposit(int userID, double depositAmount) throws SQLException;
 
-    void showSentFunds(int userID) throws SQLException;
+    int showSentFunds(int userID) throws SQLException;
 
     double getCurrentBalance(int userID) throws SQLException;
 
